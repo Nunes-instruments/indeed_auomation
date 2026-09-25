@@ -1,0 +1,36 @@
+NUNES RECRUITMENT CONSOLE V11.10
+================================
+
+AUTOMATIC FLOW
+--------------
+1. Live Indeed New applicant detection continues.
+2. Exact application / role / resume / email verification continues.
+3. Existing thank-you SENT/SKIPPED logic is unchanged.
+4. Official Indeed job description is captured automatically when available.
+5. Resume evidence is compared against that exact role description.
+6. Every candidate for the role receives a job-evidence score and rank.
+7. Score >= 70% enters AI Shortlist automatically.
+8. All remaining candidates remain visible in the second box.
+9. Completed unchanged resume+role analyses are skipped on future cycles.
+10. Waiting candidates are retried automatically when missing data becomes available.
+
+NO MANUAL ROLE SETUP
+--------------------
+No manual job-description paste is required in the Role Ranking page.
+No manual shortlist buttons are used.
+
+RANKING EVIDENCE
+----------------
+Only job-related evidence is used. Protected/sensitive personal attributes are
+excluded from scoring. Gender/sex is not inferred or used.
+
+JSON ERROR FIX
+--------------
+Backend errors are returned as JSON and frontend fetch code safely handles
+plain-text/HTML errors. This prevents the old:
+Unexpected token 'I', "Internal S"... is not valid JSON
+message from crashing the console view.
+
+BUILD FIX
+---------
+Includes the V11.9.1 local node_modules + Webpack compatibility build fix.

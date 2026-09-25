@@ -1,0 +1,29 @@
+NUNES RECRUITMENT CONSOLE V11.11.4 - VALIDATION
+============================================================
+
+PASS - Python syntax
+PASS - Version V11.11.4
+PASS - Permanent Gmail thank-you duplicate gate
+PASS - Permanent WhatsApp thank-you duplicate gate
+PASS - Keyword evidence scored first
+PASS - AI only refines gated mid-range matches
+PASS - Daily paid-call cap
+PASS - Low AI influence
+PASS - No blind 100 scores
+PASS - Equal-score earliest applicant first
+PASS - API key not hardcoded
+PASS - Ranking key secure Windows DPAPI
+PASS - OpenAI Responses API ranking-only module
+PASS - GitHub setup and push scripts
+PASS - GitHub auto-update watcher
+PASS - GitHub updater rebuild/restart
+PASS - Secrets/data excluded from Git
+PASS - Consistent medium UI
+PASS - Primary mini heading lines hidden
+PASS - Top-navigation design retained
+PASS - No pasted API secret in release
+
+OVERALL: PASS
+
+Live OpenAI/Gmail/WhatsApp/Indeed calls were not executed from this build environment.
+The ranking OpenAI key is intentionally not included in the ZIP.

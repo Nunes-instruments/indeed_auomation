@@ -1,0 +1,31 @@
+NUNES RECRUITMENT CONSOLE V11.11.3 - VALIDATION
+================================================
+PASS - Python syntax
+PASS - TypeScript source check
+PASS - Browser-side Indeed / WhatsApp JavaScript syntax (unchanged production scripts)
+PASS - Larger UI font/readability overrides
+PASS - Stage 1 recent-retry WhatsApp acknowledgement
+PASS - Candidate Gmail acknowledgement remains independent and immediate via mail outbox
+PASS - Late stronger candidate re-ranks to the top
+PASS - Top-list Stage 2 NOT SENT visibility before HR approval
+PASS - HR Top-N re-approval adds only newly eligible candidates without duplicating prior interview notices
+PASS - Stage 2 email and WhatsApp templates remain editable
+PASS - Single consolidated EOD report notification
+PASS - EOD report includes every ongoing role, including a role with zero applicants
+PASS - Paused/closed role excluded from ongoing EOD report
+PASS - EOD report includes per-candidate ranking / Stage 1 / HR / Stage 2 status
+PASS - EOD default time 19:00 Windows local time and editable in Settings
+PASS - Manual Send report now endpoint/UI
+PASS - Automatic per-role ranking report mails removed from runtime loop
+PASS - Fixed report sender nunescbe@gmail.com
+PASS - NAS/UNC-safe launcher retained
+PASS - ZIP integrity
+
+Behavior test summary:
+- Existing recent application with delayed phone extraction queued WhatsApp on retry even though new_applicant=false.
+- Duplicate retry created only one ACK_WHATSAPP record.
+- A late 99% candidate moved to rank #1 and could be newly HR-approved without duplicating the earlier approved candidate's interview notification.
+- One EOD report was created for all ongoing roles and excluded the closed role.
+- A current open role with zero applicants was still listed in the EOD report.
+
+Live Indeed/Gmail/WhatsApp network delivery cannot be executed inside this build container because it does not have the user's logged-in Chrome/Gmail/WhatsApp sessions. Runtime logic was validated locally and statically.

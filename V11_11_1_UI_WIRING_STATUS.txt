@@ -1,0 +1,29 @@
+NUNES RECRUITMENT CONSOLE V11.11.1
+TOP-BAR OPERATIONS HUB + LIVE WIRING
+====================================
+
+UI
+- Sidebar removed
+- Sticky top navigation added
+- Approved Recruitment Operations Hub overview implemented
+- Responsive desktop/tablet/mobile layout added
+
+REAL DATA WIRING
+- Hiring Pipeline -> live dashboard + ranking + HR pipeline counts
+- Active Roles -> lightweight backend role aggregate endpoint
+- AI Ranking Status -> role ranking status API
+- Live Indeed Detection -> live detection dashboard state
+- Candidate Processing -> recent applications + ranking/HR state
+- View Role -> opens exact selected role
+- Global Search -> Candidates search
+- Start/Stop -> production automation endpoints
+- View on Indeed / Connect Chrome -> existing Chrome endpoints
+
+BACKEND CHANGE
+- Added only one read-only endpoint: /api/recruitment/overview
+- No candidate send/ranking/detection rules were replaced
+
+FAST START
+- New frontend is built once for V11.11.1
+- Existing dependency caches are reused
+- Subsequent starts use quick-check cached startup

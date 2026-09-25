@@ -1,0 +1,27 @@
+# Local runtime / builds
+.venv/
+__pycache__/
+*.pyc
+frontend/node_modules/
+frontend/.next/
+
+# Local data, logs, PID files, resumes
+data/
+*.log
+*.pid
+
+# Secrets / local environment
+.env
+.env.*
+*.dpapi
+secrets/
+settings.local.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Never commit local settings; settings.example.json is the safe template.
+/settings.json

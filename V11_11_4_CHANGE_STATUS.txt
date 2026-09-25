@@ -1,0 +1,39 @@
+NUNES RECRUITMENT CONSOLE V11.11.4
+==================================
+
+STRICT DUPLICATE ACKNOWLEDGEMENTS
+- Candidate thank-you Gmail keeps the permanent existing duplicate ledger.
+- Stage-1 WhatsApp now also deduplicates by normalized phone number across applications.
+- SENT / SEND_UNCERTAIN / SENDING / QUEUED / WAITING_LOGIN reservations block another thank-you.
+- Interview (Stage 2) remains a separate HR-approved message and is independently deduplicated.
+
+STRICT LOW-COST OPENAI RANKING
+- Deterministic role requirement / resume keyword evidence is always scored first.
+- Local score is capped below 100; the system never blindly assigns 100% certainty.
+- OpenAI is used only for mid-range keyword matches after local evidence passes the gate.
+- Default model: gpt-5.6-luna.
+- Default AI weight: 12% maximum refinement, with semantic score clamped near local evidence.
+- Default paid-call cap: 40 calls per Windows local day.
+- Clear high matches and weak matches stay local and cost $0 API usage.
+- If API key/API/network/cost cap is unavailable, ranking continues locally.
+- Protected/sensitive personal attributes remain excluded.
+- Equal final scores are ordered by earliest application first.
+
+API KEY SECURITY
+- OpenAI ranking key is used only by openai_ranker.py -> review_engine.py.
+- It is not stored in settings.json and is not committed to GitHub.
+- Settings UI saves it using Windows-user DPAPI.
+- SET_OPENAI_RANKING_KEY.bat is included as a secure fallback.
+
+GITHUB UPDATE WORKFLOW
+- .gitignore excludes data, resumes, builds, logs, settings and secrets.
+- GITHUB_SETUP_ONCE.bat connects an intended repository and pushes the code baseline.
+- PUSH_UPDATE_TO_GITHUB.bat commits/pushes later code updates.
+- github_auto_update.py checks origin every 60 seconds on connected installations.
+- When code changes, it pulls, rebuilds only as needed, restarts the local services and the browser only needs refresh.
+- Local candidate/database/settings/secrets remain outside GitHub.
+
+UI
+- Same top-navigation / rounded-card visual language retained across every page.
+- Medium-size font pass applied globally.
+- Primary page headings show the page name only; small eyebrow/subtitle lines are hidden.

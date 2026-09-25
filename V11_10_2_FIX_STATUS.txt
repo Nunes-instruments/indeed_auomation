@@ -1,0 +1,30 @@
+NUNES RECRUITMENT CONSOLE V11.10.2
+===================================
+
+FIX STATUS
+----------
+PASS - V11.9 -> V11.10 Role Review database migration
+PASS - rank_position / auto_shortlisted columns created before indexes
+PASS - existing applicant/sent records preserved during migration test
+PASS - dashboard lite payload returns saved applicant/sent counts
+PASS - dashboard component isolation prevents one subsystem causing whole-page HTTP 500
+PASS - settings file atomic save + readback verification
+PASS - blank old message template restores safe default
+PASS - Settings/Messaging reload saved backend settings instead of trusting stale browser cache
+PASS - Messaging now includes Save message button
+PASS - settings save returns immediately; Gmail verification runs in background
+PASS - persistent DB pre-migration backup added
+PASS - /api/data-status diagnostics added
+PASS - Python syntax validation
+PASS - TypeScript source validation
+
+IMPORTANT
+---------
+Existing candidate data remains in the persistent Windows location:
+%LOCALAPPDATA%\NunesRecruitmentConsole\automation.db
+
+A pre-migration safety backup is created at:
+%LOCALAPPDATA%\NunesRecruitmentConsole\backups\automation_pre_v11_10_2.db
+
+Dashboard: http://127.0.0.1:5285/#overview
+Backend:   http://127.0.0.1:5286

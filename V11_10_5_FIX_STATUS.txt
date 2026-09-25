@@ -1,0 +1,36 @@
+NUNES RECRUITMENT CONSOLE V11.10.5
+=================================
+
+FIXED FROM V11.10.4
+-------------------
+1. Backend error: name 'get_state' is not defined
+   Cause: chrome_cdp.py used get_state() in the CDP recovery status helper but
+   did not import it from database.py.
+   Fix: get_state is now imported.
+
+2. Indeed JavaScript error: ReferenceError: scopeRoot is not defined
+   Cause: the main Candidates collector referenced scopeRoot even though that
+   variable only exists inside the candidate-detail payload.
+   Fix: the main collector now uses document.querySelectorAll() for the
+   compatibility candidate-link fallback.
+
+3. LIVE/NEW CANDIDATE PRIORITY
+   New/current applicants are processed first. Mail delivery is woken first
+   when application + email + role verification succeeds. Ranking runs in its
+   own worker and cannot intentionally delay the acknowledgement outbox.
+
+4. ACTIVE RANKING WORKFLOW
+   Candidates with Indeed workflow status Hired, Selected, Not Selected,
+   Rejected, Withdrawn or Archived are removed from ACTIVE ranking. They are
+   not deleted; they remain visible in Removed from active ranking history.
+   Other active/new candidates continue to be ranked by job-description versus
+   resume evidence.
+
+5. PROTECTED TRAITS
+   Gender/sex, age, caste, religion, race, disability, marital status and other
+   protected/sensitive traits are not used in the ranking score.
+
+DATA SAFETY
+-----------
+Existing applicants, sent responses, Gmail settings and role-review history use
+the same persistent database/settings location and are not reset.

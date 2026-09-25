@@ -1,0 +1,14 @@
+NUNES RECRUITMENT CONSOLE V11.11.3
+
+- Larger fonts/readability across all pages.
+- Stage 1 acknowledgement: Gmail + WhatsApp independently and immediately when contacts are available.
+- WhatsApp retry can recover a new/recent applicant whose phone becomes available after the first Indeed render.
+- Continuous role ranking remains active; late stronger applicants move upward automatically.
+- Top list explicitly shows Stage 2 NOT SENT until HR approval.
+- HR Top 20/30/40/custom can be clicked again after late applicants arrive; only newly eligible candidates are added.
+- Stage 2 email and WhatsApp templates remain fully editable.
+- Replaces automatic per-role ranking emails with ONE end-of-day consolidated email from nunescbe@gmail.com.
+- Daily report includes all ongoing roles, each as a separate candidate list with ranking, Stage 1, HR and Stage 2 status.
+- Default EOD report time: 19:00 Windows local time; editable in Settings.
+- Send report now button added.
+- NAS/UNC-safe startup and 24/7 operation retained.

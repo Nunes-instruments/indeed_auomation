@@ -1,0 +1,32 @@
+NUNES RECRUITMENT CONSOLE V11.11.1 - TOPBAR OPERATIONS HUB VALIDATION
+========================================================================
+
+PASS - Python syntax
+PASS - TypeScript / JSX source
+PASS - CSS brace balance
+PASS - Sidebar removed from JSX
+PASS - Sticky top navigation present
+PASS - Operations Hub overview present
+PASS - Six pipeline stages present
+PASS - Active role pipeline present
+PASS - AI ranking panel wired
+PASS - Live Indeed panel wired
+PASS - Candidate processing wired
+PASS - Global search wired
+PASS - Exact role deep-link wired
+PASS - Automation buttons wired
+PASS - Lightweight overview route
+PASS - Frontend uses lightweight route
+PASS - V11.11.1 version
+PASS - NAS cache version updated
+PASS - Old frontend cache blocked
+PASS - automation.py workflow unchanged
+PASS - chrome_cdp.py workflow unchanged
+PASS - review_engine.py workflow unchanged
+PASS - database.py workflow unchanged
+PASS - Overview aggregate behavior
+PASS - Indeed / WhatsApp browser JS
+
+OVERALL: PASS
+
+Real Indeed/Gmail/WhatsApp network traffic was not generated in this build environment.

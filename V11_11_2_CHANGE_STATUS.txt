@@ -1,0 +1,28 @@
+NUNES RECRUITMENT CONSOLE V11.11.2
+===================================
+
+ALWAYS-ON / 24-7
+- Start / Stop buttons removed from frontend.
+- Recruitment automation is forced ON whenever the local service starts.
+- Legacy Stop API no longer disables the always-on service; use STOP.bat to stop the application.
+
+WHATSAPP
+- WhatsApp Web auto-opens in the same approved Chrome profile.
+- One-time QR link is reused after login.
+- Status is visible in the top bar; Open WhatsApp remains a manual fallback in Settings.
+
+HR INTERVIEW SELECTION
+- HR chooses Top 20 / Top 30 / Top 40 / custom count per role.
+- AI ranking remains continuous and evidence-based.
+- No interview message is released until HR explicitly approves the batch.
+- Batch approval immediately queues interview email + WhatsApp.
+- Mon-Wed approval -> next-day interview.
+- Thu/Fri approval -> Monday interview.
+
+MESSAGING
+- Stage 1 acknowledgement email + WhatsApp templates are editable.
+- Stage 2 interview email + WhatsApp templates are editable.
+
+UI
+- Fonts increased slightly across Candidates, Sent, Roles, Messaging, Settings and Activity.
+- Top-bar navigation retained.

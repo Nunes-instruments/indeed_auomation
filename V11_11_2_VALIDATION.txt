@@ -1,0 +1,31 @@
+NUNES RECRUITMENT CONSOLE V11.11.2 - VALIDATION
+==========================================================
+
+PASS - Python syntax
+PASS - V11.11.2 version
+PASS - Start/Stop buttons removed from frontend
+PASS - 24/7 live UI
+PASS - Always-on backend startup
+PASS - Legacy Stop API cannot disable service
+PASS - WhatsApp automatic login loop
+PASS - WhatsApp session probe
+PASS - Stage 1 message editor
+PASS - Stage 2 message editor
+PASS - HR top-count API
+PASS - HR Top 20/30/40 UI
+PASS - Custom HR count
+PASS - Batch sends interview email + WhatsApp
+PASS - Mon-Wed next day rule
+PASS - Thu-Fri Monday rule
+PASS - Human HR approval gate retained
+PASS - Larger fonts across pages
+PASS - NAS/UNC-safe startup retained
+PASS - One-time frontend rebuild forced
+PASS - Launcher version updated
+PASS - WhatsApp browser JavaScript
+PASS - HR batch + interview scheduling behavior
+
+OVERALL: PASS
+
+Live Indeed/Gmail/WhatsApp delivery was not sent from this build environment.
+The package was validated with isolated data/workflow tests and source/browser-script checks.
