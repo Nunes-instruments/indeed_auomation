@@ -24,7 +24,11 @@ BUNDLED_SETTINGS_FILE = BASE_DIR / "settings.json"
 
 _lock = RLock()
 
+# New versions only ADD missing defaults. Existing user-saved values win.
+SETTINGS_SCHEMA_VERSION = 6
+
 DEFAULTS = {
+    "settings_schema_version": SETTINGS_SCHEMA_VERSION,
     "company_name": "Your Company Name",
     "company_email": "nuneslead@gmail.com",
     "smtp_app_password": "",
@@ -119,6 +123,23 @@ DEFAULTS = {
 }
 
 
+
+def save_settings_patch(changes):
+    """
+    Change only the supplied keys and keep every existing saved preference.
+
+    This is the upgrade-safe rule used by future UI/process additions:
+      old saved value -> keep it
+      brand-new setting -> add its default
+      user explicitly changes setting -> replace only that key
+    """
+    current = load_settings()
+    for key, value in (changes or {}).items():
+        current[key] = value
+    return save_settings(current)
+
+
+
 def _legacy_settings_candidates():
     candidates = []
 
@@ -207,6 +228,7 @@ def load_settings():
         out.update(data)
         out["company_email"] = "nuneslead@gmail.com"
         out["hr_report_sender_email"] = "nunescbe@gmail.com"
+        out["settings_schema_version"] = SETTINGS_SCHEMA_VERSION
 
         # A blank template is almost always an interrupted/old save. Keep the
         # production acknowledgement usable instead of showing an empty editor.
@@ -230,6 +252,7 @@ def save_settings(data):
         out.update(data)
         out["company_email"] = "nuneslead@gmail.com"
         out["hr_report_sender_email"] = "nunescbe@gmail.com"
+        out["settings_schema_version"] = SETTINGS_SCHEMA_VERSION
 
         if not str(out.get("subject_template") or "").strip():
             out["subject_template"] = DEFAULTS["subject_template"]

@@ -33,9 +33,9 @@ PACKAGE_JSON = FRONTEND_DIR / "package.json"
 # - Python 3.10 through 3.13 are accepted when required packages are available.
 # - Node.js 20.9+ is accepted (22/24/26 are all fine).
 # This avoids forcing one exact runtime version on every Windows PC.
-APP_VERSION = "V11.11.5"
+APP_VERSION = "V11.11.6"
 COMPATIBLE_CACHE_VERSIONS = {
-    "V11.11.5",
+    "V11.11.6",
 }
 MIN_PYTHON = (3, 10)
 MAX_PYTHON_EXCLUSIVE = (3, 14)

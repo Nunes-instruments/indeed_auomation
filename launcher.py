@@ -90,7 +90,7 @@ def port_open(port):
             pass
 
 
-def api_is_v11_11_5():
+def api_is_v11_11_6():
     if not port_open(API_PORT):
         return False
 
@@ -107,7 +107,7 @@ def api_is_v11_11_5():
             )
 
         return (
-            data.get("version") == "V11.11.5"
+            data.get("version") == "V11.11.6"
             and int(data.get("port", 0)) == API_PORT
         )
     except Exception:
@@ -186,7 +186,7 @@ def runtime_python(info):
 
 
 def spawn_api(info):
-    if api_is_v11_11_5():
+    if api_is_v11_11_6():
         return None
 
     if port_open(API_PORT):
@@ -295,14 +295,14 @@ def main():
     start_github_auto_update()
 
     # If it is already running, repeated double-click is virtually instant.
-    if api_is_v11_11_5() and port_open(UI_PORT):
+    if api_is_v11_11_6() and port_open(UI_PORT):
         if not background:
             open_ui()
         return 0
 
     # If V11.7 or another process still owns the same ports, START.bat normally
     # clears it first. Do not kill arbitrary processes from Python.
-    if port_open(API_PORT) and not api_is_v11_11_5():
+    if port_open(API_PORT) and not api_is_v11_11_6():
         return 2
 
     api_proc = spawn_api(info)
@@ -317,7 +317,7 @@ def main():
         return 3
 
     ui_opened = False
-    api_ready = api_is_v11_11_5()
+    api_ready = api_is_v11_11_6()
     ui_ready = port_open(UI_PORT)
 
     # Parallel readiness loop. Browser opens as soon as the dashboard responds;
@@ -329,7 +329,7 @@ def main():
             ui_ready = port_open(UI_PORT)
 
         if not api_ready:
-            api_ready = api_is_v11_11_5()
+            api_ready = api_is_v11_11_6()
 
         if ui_ready and not background and not ui_opened:
             open_ui()

@@ -1,6 +1,6 @@
 {
   "name": "nunes-recruitment-console",
-  "version": "11.11.5",
+  "version": "11.11.6",
   "private": true,
   "scripts": {
     "dev": "next dev",

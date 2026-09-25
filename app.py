@@ -12,6 +12,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.exceptions import HTTPException
 
 from config import load_settings, save_settings
+from persistent_profile import sync_persistent_profile, persistence_status
 from openai_ranker import (
     ranking_key_status,
     save_ranking_api_key,
@@ -88,7 +89,7 @@ from recruitment_pipeline import (
 
 BASE_DIR = Path(__file__).resolve().parent
 API_PORT = 5286
-APP_VERSION = "V11.11.5"
+APP_VERSION = "V11.11.6"
 
 app = Flask(__name__)
 app.secret_key = "nunes-recruitment-console-v10"
@@ -989,6 +990,10 @@ def public_settings():
         "whatsapp_enabled": True,
         "whatsapp_auto_connect": bool(s.get("whatsapp_auto_connect", True)),
         "whatsapp_default_country_code": s.get("whatsapp_default_country_code", "91"),
+        "persistence": persistence_status(
+            settings=s,
+            openai_status=ranking_key_status(),
+        ),
     }
 
 
@@ -1503,6 +1508,10 @@ def api_settings():
             s["hr_report_smtp_app_password"] = hr_pw
 
     saved = save_settings(s)
+    sync_persistent_profile(
+        settings=saved,
+        openai_status=ranking_key_status(),
+    )
     set_state("settings_saved_at", time.strftime("%Y-%m-%dT%H:%M:%S%z"))
     try:
         resume_config_waiting_notifications()
@@ -1709,6 +1718,10 @@ def api_openai_ranking_key_save():
         return jsonify({"ok": False, "message": "API key is required."}), 400
     try:
         result = save_ranking_api_key(key)
+        sync_persistent_profile(
+            settings=load_settings(),
+            openai_status=ranking_key_status(),
+        )
         set_state("openai_ranking_key_saved_at", now())
         log("INFO", "OpenAI ranking key saved securely for ranking-only use.")
         return jsonify({"ok": True, **result})
@@ -1720,10 +1733,26 @@ def api_openai_ranking_key_save():
 def api_openai_ranking_key_remove():
     try:
         result = remove_ranking_api_key()
+        sync_persistent_profile(
+            settings=load_settings(),
+            openai_status=ranking_key_status(),
+        )
         log("INFO", "OpenAI ranking key removed from local secure storage.")
         return jsonify({"ok": True, **result})
     except Exception as exc:
         return jsonify({"ok": False, "message": str(exc)}), 400
+
+
+
+@app.get("/api/persistence/status")
+def api_persistence_status():
+    return jsonify({
+        "ok": True,
+        "persistence": persistence_status(
+            settings=load_settings(),
+            openai_status=ranking_key_status(),
+        ),
+    })
 
 
 @app.get("/api/recruitment/status")
@@ -1883,6 +1912,10 @@ def health():
 
 if __name__ == "__main__":
     enforce_always_on_mode()
+    sync_persistent_profile(
+        settings=load_settings(),
+        openai_status=ranking_key_status(),
+    )
     if not ensure_runtime_schema():
         print(
             "[ERROR] Persistent-data migration failed: "
@@ -1900,7 +1933,7 @@ if __name__ == "__main__":
         )
         raise RuntimeError("Runtime self-test failed")
 
-    log("INFO", "V11.11.4 always-on runtime self-test passed.")
+    log("INFO", "V11.11.6 persistent-connection runtime self-test passed.")
 
     threading.Thread(
         target=auto_connection_loop,

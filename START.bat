@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-title Nunes Recruitment Console V11.11.5
+title Nunes Recruitment Console V11.11.6
 
 REM ================================================================
 REM NAS / UNC SAFE FAST START
@@ -22,20 +22,20 @@ goto :LOCAL_START
 
 
 :RUN_FROM_LOCAL_CACHE
-set "CACHE_ROOT=%LOCALAPPDATA%\NunesRecruitmentConsole\AppCache\V11_11_5"
+set "CACHE_ROOT=%LOCALAPPDATA%\NunesRecruitmentConsole\AppCache\V11_11_6"
 set "CACHE_MARKER=%CACHE_ROOT%\NUNES_BUILD_VERSION.txt"
 set "NEED_COPY=1"
 
 if exist "%CACHE_MARKER%" (
     set "CACHE_VERSION="
     set /p CACHE_VERSION=<"%CACHE_MARKER%"
-    if /I "%CACHE_VERSION%"=="V11.11.5" set "NEED_COPY=0"
+    if /I "%CACHE_VERSION%"=="V11.11.6" set "NEED_COPY=0"
 )
 
 if "%NEED_COPY%"=="1" (
     echo.
     echo ============================================================
-    echo  NUNES V11.11.5 - NAS LOCAL CACHE
+    echo  NUNES V11.11.6 - NAS LOCAL CACHE
     echo ============================================================
     echo The project is on a network share.
     echo Copying the small app files locally once for faster/reliable startup...
@@ -54,7 +54,7 @@ if "%NEED_COPY%"=="1" (
         if errorlevel 1 goto :CACHE_FAIL
     )
 
-    >"%CACHE_MARKER%" echo V11.11.5
+    >"%CACHE_MARKER%" echo V11.11.6
 )
 
 REM Run the local copy. This avoids C:\Windows\.venv and avoids slow NAS builds.
@@ -128,7 +128,7 @@ if not defined PYEXE (
 )
 
 REM Already running = open immediately.
-"%PYEXE%" -c "import json,urllib.request,sys; d=json.load(urllib.request.urlopen('http://127.0.0.1:5286/version',timeout=.7)); sys.exit(0 if d.get('version')=='V11.11.5' else 1)" >nul 2>&1
+"%PYEXE%" -c "import json,urllib.request,sys; d=json.load(urllib.request.urlopen('http://127.0.0.1:5286/version',timeout=.7)); sys.exit(0 if d.get('version')=='V11.11.6' else 1)" >nul 2>&1
 if not errorlevel 1 (
     start "" "http://127.0.0.1:5285/#overview"
     exit /b 0
@@ -147,7 +147,7 @@ if not errorlevel 1 goto :FAST_LAUNCH
 
 echo.
 echo ============================================================
-echo  NUNES V11.11.5 - ONE-TIME FAST SETUP
+echo  NUNES V11.11.6 - ONE-TIME FAST SETUP
 echo ============================================================
 echo Reusing compatible Python, Node, dashboard build and cache when available.
 echo Nothing is reinstalled unless it is actually missing.
@@ -176,6 +176,6 @@ exit /b 1
 
 :FAIL
 echo.
-echo Setup failed. Run DIAGNOSE_V11_11_5.bat for the exact reason.
+echo Setup failed. Run DIAGNOSE_V11_11_6.bat for the exact reason.
 pause
 exit /b 1

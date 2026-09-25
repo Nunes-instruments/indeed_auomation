@@ -5080,3 +5080,69 @@ button,
   .uiButtonDefaultSize { height: 38px; padding: 0 13px; }
   .uiButtonLg { height: 42px; padding: 0 16px; }
 }
+
+
+/* V11.11.6 - PERSISTENT CONNECTION STATUS ------------------------- */
+.savedConnectionsCard {
+  background:
+    linear-gradient(180deg, rgba(248, 251, 255, .92), rgba(255,255,255,1));
+}
+
+.savedConnectionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.savedConnectionGrid > div {
+  min-height: 92px;
+  padding: 14px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.savedConnectionGrid span {
+  display: block;
+  margin-bottom: 7px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .045em;
+}
+
+.savedConnectionGrid strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #14213d;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.savedConnectionGrid small {
+  display: block;
+  color: #6b7b91;
+  font-size: 12px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.savedConnectionsNote {
+  margin-top: 10px;
+  padding: 11px 13px;
+  border: 1px solid #dce8f8;
+  border-radius: 10px;
+  background: #f7faff;
+  color: #56677e;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 1050px) {
+  .savedConnectionGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .savedConnectionGrid { grid-template-columns: 1fr; }
+}

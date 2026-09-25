@@ -143,6 +143,19 @@ type Settings = {
   whatsapp_enabled: boolean;
   whatsapp_auto_connect: boolean;
   whatsapp_default_country_code: string;
+  persistence?: {
+    saved_at?: string | null;
+    policy?: string;
+    scope?: string;
+    candidate_gmail_saved?: boolean;
+    hr_gmail_saved?: boolean;
+    openai_saved?: boolean;
+    indeed_reuses_chrome?: boolean;
+    whatsapp_reuses_chrome?: boolean;
+    github_repository?: string;
+    github_branch?: string;
+    message?: string;
+  };
 };
 
 type Dashboard = {
@@ -1991,6 +2004,58 @@ export default function Home() {
                 </small>
               </label>
             </div>
+
+            <section className="pipelineSettingsCard savedConnectionsCard">
+              <div className="pipelineSettingsHeader">
+                <div>
+                  <h3>Saved connections & preferences</h3>
+                  <p>
+                    Connect or configure once. The saved setup is reused after restart and future software updates.
+                    A value changes only when you explicitly save or replace it.
+                  </p>
+                </div>
+                <span className="servicePill ready"><i /> Persistent</span>
+              </div>
+
+              <div className="savedConnectionGrid">
+                <div>
+                  <span>Candidate Gmail</span>
+                  <strong>{settingsDraft.persistence?.candidate_gmail_saved ? "Saved" : "Needs setup"}</strong>
+                  <small>nuneslead@gmail.com</small>
+                </div>
+                <div>
+                  <span>HR Gmail</span>
+                  <strong>{settingsDraft.persistence?.hr_gmail_saved ? "Saved" : "Needs setup"}</strong>
+                  <small>nunescbe@gmail.com</small>
+                </div>
+                <div>
+                  <span>OpenAI ranking</span>
+                  <strong>{settingsDraft.persistence?.openai_saved ? "Saved securely" : "Needs setup"}</strong>
+                  <small>Windows-user secure storage</small>
+                </div>
+                <div>
+                  <span>Indeed</span>
+                  <strong>Reuse Chrome session</strong>
+                  <small>Auto reconnect after restart</small>
+                </div>
+                <div>
+                  <span>WhatsApp</span>
+                  <strong>Reuse Chrome login</strong>
+                  <small>QR again only if WhatsApp expires the session</small>
+                </div>
+                <div>
+                  <span>GitHub</span>
+                  <strong>Saved repository</strong>
+                  <small>{settingsDraft.persistence?.github_repository || "Nunes-instruments/indeed_auomation"}</small>
+                </div>
+              </div>
+
+              <div className="savedConnectionsNote">
+                Saved does not mean an external provider can never expire a login. If Gmail, WhatsApp,
+                Indeed, GitHub or OpenAI requires re-authentication, reconnect once and the new saved
+                state becomes the one reused next time.
+              </div>
+            </section>
 
             <section className="pipelineSettingsCard rankingCostCard">
               <div className="pipelineSettingsHeader">

@@ -1670,3 +1670,37 @@ GITHUB:
 - PUSH_UPDATE_TO_GITHUB.bat pushes future code updates to main.
 - Running installations keep checking GitHub every 60 seconds.
 - Local data/secrets/builds remain excluded through .gitignore.
+
+
+V11.11.6 - CONNECT ONCE / SAVE ONCE / REUSE
+---------------------------------------------
+
+The Windows user profile is now the permanent source of truth.
+
+When you save a setting or connect a service:
+  - it remains after closing/reopening the app
+  - it remains after extracting a newer version
+  - GitHub code updates do not overwrite it
+  - brand-new future settings are added with defaults
+  - existing saved values are NOT reset
+  - only an explicit Save/Replace action changes an existing value
+
+Persistent sources:
+  Candidate Gmail App Password -> stable Windows-user settings store
+  HR Gmail App Password        -> stable Windows-user settings store
+  OpenAI ranking API key       -> Windows DPAPI encrypted store
+  Indeed login/session         -> normal Chrome user profile
+  WhatsApp login/session       -> normal Chrome user profile
+  GitHub repository            -> fixed indeed_auomation repository
+  GitHub authentication        -> Windows Git Credential Manager
+
+A metadata-only persistent_profile.json is also maintained under:
+  %LOCALAPPDATA%\NunesRecruitmentConsole
+
+It contains NO passwords/API keys. It simply records which integrations and
+preferences should be reused.
+
+Important:
+External services may expire/revoke a login. "Saved" means the console remembers
+and reuses the configuration; it cannot prevent Gmail/WhatsApp/Indeed/GitHub
+from requiring a fresh authentication later.
